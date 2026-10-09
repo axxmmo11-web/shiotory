@@ -119,7 +119,10 @@ section{padding-block:clamp(64px,9vw,112px)}
 .notice-txt p:last-child{color:var(--ink);font-size:15px}
 .notice-price{display:grid;gap:6px;justify-items:start;border-left:1px solid var(--line);padding-left:clamp(20px,4vw,48px)}
 .price-label{font-size:13px;color:var(--muted);letter-spacing:.1em}
-.price{font-family:var(--f-latin);font-size:clamp(44px,6vw,64px);line-height:1;color:var(--olive);font-variant-numeric:tabular-nums;margin-bottom:14px}
+.price{font-family:var(--f-latin);font-size:clamp(44px,6vw,64px);line-height:1;color:var(--olive);font-variant-numeric:tabular-nums;margin-bottom:8px}
+.steps{margin:0 0 12px;padding-left:1.3em;font-size:13px;color:var(--ink);line-height:1.8}
+.notice-btns{display:flex;flex-wrap:wrap;gap:10px}
+.notice-btns .btn{padding:11px 18px;font-size:13px}
 .price small{font-family:var(--f-body);font-size:18px;margin-left:4px}
 @media (max-width:760px){.notice{grid-template-columns:1fr}.notice-price{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:20px}}
 .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px)}
@@ -244,9 +247,18 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:13px;color:
           <p>宮城県内で働く方を対象に、SHIOTORYに掲載するインタビュー記事の取材モニターを募集しています。完成した記事は、ご自身のSNSやホームページでの紹介にもお使いいただけます。</p>
         </div>
         <div class="notice-price">
-          <span class="price-label">モニター価格</span>
+          <span class="price-label">正規料金 10,000円</span>
+          <span class="price-label">公式LINE登録特典</span>
           <span class="price">5,000<small>円</small></span>
-          <a class="btn" href="https://forms.gle/NQ9yW2eUf6fBi2or9" target="_blank" rel="noopener">フォームから応募する <span aria-hidden="true">→</span></a>
+          <ol class="steps">
+            <li>公式LINEに友だち登録</li>
+            <li>届いたメッセージの合言葉を確認</li>
+            <li>フォームの「ご相談の概要」に合言葉を書いて応募</li>
+          </ol>
+          <div class="notice-btns">
+            <a class="btn" href="https://lin.ee/wNqDfj4" target="_blank" rel="noopener">公式LINEに登録 <span aria-hidden="true">→</span></a>
+            <a class="btn ghost" href="https://forms.gle/NQ9yW2eUf6fBi2or9" target="_blank" rel="noopener">応募フォーム <span aria-hidden="true">→</span></a>
+          </div>
         </div>
       </div>
       <div class="work-grid">
