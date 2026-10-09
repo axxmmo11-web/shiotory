@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="description" content="SHIOTORYは、宮城・東北で働く人の思いと、仕事の背景を伝えるインタビューメディアです。">
+<title>SHIOTORY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
+<style>
+/* Layout: editorial single column, wide photo bands, generous ivory margins; nav anchors stand in for the 5 pages */
+:root{
+  --ivory:#F4F0E8; --paper:#EBE5D9; --olive:#343C35; --olive-soft:#5B6658;
+  --ink:#34362F; --muted:#73776B; --line:#D6CFC1; --on-olive:#F4F0E8;
+  --f-display:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --f-body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-latin:"Cormorant Garamond","Times New Roman",serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --ivory:#1F2320; --paper:#272C28; --olive:#C9D0BF; --olive-soft:#A7B19E;
+  --ink:#E6E1D6; --muted:#A3A598; --line:#3A403A; --on-olive:#1F2320; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ivory:#1F2320; --paper:#272C28; --olive:#C9D0BF; --olive-soft:#A7B19E;
+  --ink:#E6E1D6; --muted:#A3A598; --line:#3A403A; --on-olive:#1F2320; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0}
+img{max-width:100%}
+body{background:var(--ivory);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.9;letter-spacing:.02em}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:clamp(16px,5vw,48px)}
+.draft{background:var(--paper);color:var(--muted);font-size:12px;text-align:center;padding:6px 16px;letter-spacing:.06em}
+.eyebrow{font-family:var(--f-latin);font-size:15px;letter-spacing:.24em;text-transform:uppercase;color:var(--olive-soft);font-weight:600}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;text-wrap:balance;margin:0;color:var(--olive)}
+p{margin:0}
+:focus-visible{outline:2px solid var(--olive);outline-offset:3px}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ivory);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
+.logo{font-family:var(--f-latin);font-weight:600;font-size:24px;letter-spacing:.28em;color:var(--olive);text-decoration:none}
+nav{display:flex;gap:clamp(12px,3vw,28px);flex-wrap:wrap}
+nav a{font-family:var(--f-latin);font-size:14px;letter-spacing:.18em;text-decoration:none;color:var(--ink)}
+nav a:hover{color:var(--olive-soft)}
+
+/* photo placeholder */
+.photo{background:repeating-linear-gradient(135deg,var(--paper) 0 14px,var(--ivory) 14px 15px);border:1px solid var(--line);display:flex;align-items:flex-end;padding:12px 14px;color:var(--muted);font-size:12px;max-width:100%}
+
+/* hero */
+.hero{padding-block:clamp(48px,8vw,96px) 0;display:grid;gap:28px}
+.hero h1{font-size:clamp(40px,7.5vw,84px);line-height:1.25;letter-spacing:.06em}
+.hero .sub{font-family:var(--f-display);font-size:clamp(17px,2.2vw,21px);color:var(--ink)}
+.hero .photo{aspect-ratio:21/9;margin-top:12px}
+.hero-foot{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between;padding-block:8px 0}
+.hero-foot p{max-width:34em;color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:12px;background:var(--olive);color:var(--on-olive);text-decoration:none;padding:13px 26px;font-size:14px;letter-spacing:.14em;border:1px solid var(--olive);transition:background .2s,color .2s}
+.btn:hover{background:transparent;color:var(--olive)}
+.btn.ghost{background:transparent;color:var(--olive)}
+.btn.ghost:hover{background:var(--olive);color:var(--on-olive)}
+
+section{padding-block:clamp(64px,9vw,112px)}
+.sec-head{display:grid;gap:12px;margin-bottom:40px}
+.sec-head h2{font-size:clamp(26px,3.6vw,36px);line-height:1.5}
+.sec-head p{color:var(--muted);max-width:36em}
+
+/* featured */
+.featured{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,5vw,64px);align-items:center}
+.featured .photo{aspect-ratio:4/5}
+.featured blockquote{margin:0;font-family:var(--f-display);font-size:clamp(26px,3.8vw,40px);line-height:1.55;color:var(--olive)}
+.featured .txt{display:grid;gap:22px;min-width:0}
+.more{font-size:14px;letter-spacing:.1em;text-decoration:none;border-bottom:1px solid var(--olive);color:var(--olive);justify-self:start;padding-bottom:2px}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,36px)}
+.card{display:grid;gap:12px;align-content:start;text-decoration:none;min-width:0}
+.card .photo{aspect-ratio:3/2}
+.cat{font-family:var(--f-latin);font-size:13px;letter-spacing:.2em;color:var(--olive-soft);font-weight:600}
+.card h3{font-size:19px;line-height:1.6}
+.card p{color:var(--muted);font-size:14px}
+.read{font-family:var(--f-latin);font-size:14px;letter-spacing:.16em;color:var(--olive)}
+.card:hover h3{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+.card.empty .photo{opacity:.55}
+
+/* about */
+.about{background:var(--paper)}
+.about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(24px,6vw,80px)}
+.about-body{display:grid;gap:22px;max-width:36em;min-width:0}
+.about-body p:first-child{font-family:var(--f-display);font-size:19px;color:var(--olive);line-height:1.9}
+.policy{margin-top:16px;border-top:1px solid var(--line);padding-top:24px;display:grid;gap:10px}
+.policy h3{font-size:16px}
+.policy ul{margin:0;padding-left:1.2em;color:var(--ink);font-size:15px}
+
+/* work */
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px)}
+.svc{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.svc li{padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:18px;counter-reset:f}
+.flow li{display:grid;grid-template-columns:44px 1fr;gap:12px;counter-increment:f;font-size:15px}
+.flow li::before{content:counter(f,decimal-leading-zero);font-family:var(--f-latin);font-size:22px;color:var(--olive-soft);line-height:1.4}
+.flow b{display:block;color:var(--olive);font-weight:700}
+.flow span{color:var(--muted)}
+
+/* contact */
+.contact{background:var(--olive);color:var(--on-olive);text-align:left}
+.contact h2,.contact .eyebrow{color:var(--on-olive)}
+.contact .eyebrow{opacity:.75}
+.contact-inner{display:grid;gap:22px;max-width:40em}
+.contact p{opacity:.88}
+.contact .btn{background:var(--on-olive);color:var(--olive);border-color:var(--on-olive);justify-self:start}
+.contact .btn:hover{background:transparent;color:var(--on-olive)}
+
+footer{padding-block:40px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.foot{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;align-items:center}
+.foot nav a{font-size:13px}
+
+@media (max-width:760px){
+  .featured,.about-grid,.work-grid{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  .featured .photo{aspect-ratio:4/3}
+  .hero .photo{aspect-ratio:4/3}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="draft">下書きプレビュー｜写真・記事リンク・フォームURLは公開前に差し替え</div>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top">SHIOTORY</a>
+    <nav aria-label="メインメニュー">
+      <a href="#stories">STORIES</a>
+      <a href="#about">ABOUT</a>
+      <a href="#work">WORK</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <p class="eyebrow">Interview Media ― Miyagi / Tohoku</p>
+    <h1>仕事の、<br>向こう側へ。</h1>
+    <p class="sub">人を知る。仕事が生まれた背景を知る。</p>
+    <div class="photo" role="img" aria-label="写真の差し替え位置">写真：横長の人物写真（取材時に撮影したもの）</div>
+    <div class="hero-foot">
+      <p>SHIOTORYは、宮城・東北で働く人の思いと、仕事の背景を伝えるインタビューメディアです。</p>
+      <a class="btn" href="#stories">STORIES を読む <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap featured">
+      <div class="photo" role="img" aria-label="写真の差し替え位置">写真：梨園でのまなさん（掲載許可を確認）</div>
+      <div class="txt">
+        <p class="eyebrow">Featured Story</p>
+        <blockquote>「私が好きなのは、<br>長十郎です。」</blockquote>
+        <p>利府町で梨づくりに携わるまなさん。おすすめの梨を語る笑顔の向こう側にある、農園の歴史と仕事への思いを聞きました。</p>
+        <a class="more" href="#">この記事を読む →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="stories" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Latest Stories</p>
+        <h2>働く人の物語を読む。</h2>
+        <p>宮城・東北の農業、ものづくり、店づくり、地域の仕事。人の言葉から、その仕事の背景をたどります。</p>
+      </div>
+      <div class="cards">
+        <a class="card" href="#">
+          <div class="photo" role="img" aria-label="写真の差し替え位置">写真：梨と農園</div>
+          <span class="cat">FOOD &amp; FARMING</span>
+          <h3>「私が好きなのは、長十郎です。」</h3>
+          <p>梨を育てる人が語る、品種への思いと農園の物語。</p>
+          <span class="read">READ STORY →</span>
+        </a>
+        <div class="card empty">
+          <div class="photo">次の記事の写真</div>
+          <span class="cat">CRAFT &amp; MAKING</span>
+          <h3>次回の記事を準備中です</h3>
+          <p>記事を公開したら、ここにカードを追加します。</p>
+        </div>
+        <div class="card empty">
+          <div class="photo">次の記事の写真</div>
+          <span class="cat">LOCAL BUSINESS</span>
+          <h3>次回の記事を準備中です</h3>
+          <p>記事を公開したら、ここにカードを追加します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="wrap about-grid">
+      <div class="sec-head" style="margin:0">
+        <p class="eyebrow">About SHIOTORY</p>
+        <h2>仕事の向こう側を<br>知る。</h2>
+      </div>
+      <div class="about-body">
+        <p>同じ商品でも、同じサービスでも、それを生み出す人の思いや歩んできた道のりは、一人ひとり違います。</p>
+        <p>なぜ、この仕事を始めたのか。どんな迷いや選択を経て、今にたどり着いたのか。何を大切にしながら、日々仕事に向き合っているのか。</p>
+        <p>SHIOTORYは、宮城・東北で働く人の言葉に耳を傾け、その人だからこそ語れる物語を届けるインタビューメディアです。</p>
+        <p>記事を読んだ人が、知らなかった人や仕事に出会い、誰かの活動を応援したくなる。そんな出会いを、ひとつずつつくっていきます。</p>
+        <div class="policy">
+          <h3>編集方針</h3>
+          <ul>
+            <li>本人の言葉や考えを尊重し、発言の意味を変えない。</li>
+            <li>事実関係を確認し、推測を事実のように書かない。</li>
+            <li>掲載内容・写真の使用について、取材先と事前に確認する。</li>
+            <li>広告・協賛・PR記事を掲載する場合は、読者にわかる形で明示する。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Work with SHIOTORY</p>
+        <h2>あなたの仕事の背景を、言葉にしませんか。</h2>
+        <p>商品やサービスの魅力だけでなく、それが生まれた背景や、働く人の思いまで伝えるインタビュー記事を制作します。</p>
+      </div>
+      <div class="work-grid">
+        <div>
+          <p class="eyebrow" style="margin-bottom:12px">対応内容</p>
+          <ul class="svc">
+            <li>経営者・スタッフへのインタビュー</li>
+            <li>創業ストーリー・事業紹介</li>
+            <li>採用ページ・社員インタビュー</li>
+            <li>オウンドメディアの記事制作</li>
+            <li>構成案作成・執筆・リライト（案件に応じて相談）</li>
+          </ul>
+        </div>
+        <div>
+          <p class="eyebrow" style="margin-bottom:16px">ご依頼の流れ</p>
+          <ol class="flow">
+            <li><div><b>お問い合わせ</b><span>目的、掲載媒体、希望時期をお知らせください。</span></div></li>
+            <li><div><b>ヒアリング</b><span>記事の読者や伝えたい内容を確認します。</span></div></li>
+            <li><div><b>お見積もり・企画</b><span>取材範囲と納期をすり合わせます。</span></div></li>
+            <li><div><b>取材・執筆</b><span>必要に応じて写真撮影や素材確認を行います。</span></div></li>
+            <li><div><b>確認・納品</b><span>事実確認を経て、合意した形式で納品します。</span></div></li>
+          </ol>
+        </div>
+      </div>
+      <p style="margin-top:40px;color:var(--muted)">取材内容や掲載媒体、ご予算に合わせてご相談を承ります。</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap contact-inner">
+      <p class="eyebrow">Contact</p>
+      <h2>取材・記事制作のご相談</h2>
+      <p>SHIOTORYへの取材依頼、インタビュー記事制作、企画のご相談はこちらからお寄せください。内容を確認のうえ、返信いたします。</p>
+      <a class="btn" href="#">お問い合わせフォームへ <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>SHIOTORY｜仕事の、向こう側へ。</span>
+    <nav aria-label="フッターメニュー">
+      <a href="#stories">STORIES</a><a href="#about">ABOUT</a><a href="#work">WORK</a><a href="#contact">CONTACT</a>
+    </nav>
+    <span>© SHIOTORY</span>
+  </div>
+</footer>
+</body>
+</html>
