@@ -113,6 +113,15 @@ section{padding-block:clamp(64px,9vw,112px)}
 .policy ul{margin:0;padding-left:1.2em;color:var(--ink);font-size:15px}
 
 /* work */
+.notice{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(20px,4vw,56px);align-items:center;border:1px solid var(--olive);padding:clamp(22px,4vw,40px);margin-bottom:56px}
+.notice-txt{display:grid;gap:10px;min-width:0}
+.notice-txt h3{font-size:clamp(20px,2.6vw,26px);line-height:1.5}
+.notice-txt p:last-child{color:var(--ink);font-size:15px}
+.notice-price{display:grid;gap:6px;justify-items:start;border-left:1px solid var(--line);padding-left:clamp(20px,4vw,48px)}
+.price-label{font-size:13px;color:var(--muted);letter-spacing:.1em}
+.price{font-family:var(--f-latin);font-size:clamp(44px,6vw,64px);line-height:1;color:var(--olive);font-variant-numeric:tabular-nums;margin-bottom:14px}
+.price small{font-family:var(--f-body);font-size:18px;margin-left:4px}
+@media (max-width:760px){.notice{grid-template-columns:1fr}.notice-price{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:20px}}
 .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px)}
 .svc{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .svc li{padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
@@ -227,6 +236,18 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:13px;color:
         <p class="eyebrow">Work with SHIOTORY</p>
         <h2>あなたの仕事の背景を、言葉にしませんか。</h2>
         <p>商品やサービスの魅力だけでなく、それが生まれた背景や、働く人の思いまで伝えるインタビュー記事を制作します。</p>
+      </div>
+      <div class="notice">
+        <div class="notice-txt">
+          <p class="eyebrow">Now Recruiting</p>
+          <h3>創刊記念・取材モニター募集中</h3>
+          <p>宮城県内で働く方を対象に、SHIOTORYに掲載するインタビュー記事の取材モニターを募集しています。完成した記事は、ご自身のSNSやホームページでの紹介にもお使いいただけます。</p>
+        </div>
+        <div class="notice-price">
+          <span class="price-label">モニター価格</span>
+          <span class="price">5,000<small>円</small></span>
+          <a class="btn" href="https://forms.gle/NQ9yW2eUf6fBi2or9" target="_blank" rel="noopener">フォームから応募する <span aria-hidden="true">→</span></a>
+        </div>
       </div>
       <div class="work-grid">
         <div>
