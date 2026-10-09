@@ -51,7 +51,10 @@ nav a:hover{color:var(--olive-soft)}
 .hero{padding-block:clamp(48px,8vw,96px) 0;display:grid;gap:28px}
 .hero h1{font-size:clamp(40px,7.5vw,84px);line-height:1.25;letter-spacing:.06em}
 .hero .sub{font-family:var(--f-display);font-size:clamp(17px,2.2vw,21px);color:var(--ink)}
-.hero .photo{aspect-ratio:21/9;margin-top:12px}
+.hero-art{margin:12px 0 0;display:grid;gap:10px}
+.canvas-box{aspect-ratio:21/9;max-width:100%;background:var(--paper)}
+.canvas-box canvas{display:block;width:100%;height:100%}
+.hero-art figcaption{font-size:12px;color:var(--muted);letter-spacing:.06em}
 .hero-foot{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between;padding-block:8px 0}
 .hero-foot p{max-width:34em;color:var(--ink)}
 .btn{display:inline-flex;align-items:center;gap:12px;background:var(--olive);color:var(--on-olive);text-decoration:none;padding:13px 26px;font-size:14px;letter-spacing:.14em;border:1px solid var(--olive);transition:background .2s,color .2s}
@@ -129,14 +132,13 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:13px;color:
   .featured,.about-grid,.work-grid{grid-template-columns:1fr}
   .cards{grid-template-columns:1fr}
   .featured .photo{aspect-ratio:4/3}
-  .hero .photo{aspect-ratio:4/3}
+  .canvas-box{aspect-ratio:4/3}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 
-<div class="draft">下書きプレビュー｜写真・記事リンク・フォームURLは公開前に差し替え</div>
 
 <header>
   <div class="wrap bar">
@@ -155,7 +157,10 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:13px;color:
     <p class="eyebrow">Interview Media ― Miyagi / Tohoku</p>
     <h1>仕事の、<br>向こう側へ。</h1>
     <p class="sub">人を知る。仕事が生まれた背景を知る。</p>
-    <div class="photo" role="img" aria-label="写真の差し替え位置">写真：横長の人物写真（取材時に撮影したもの）</div>
+    <figure class="hero-art">
+      <div class="canvas-box"><canvas id="horizon" role="img" aria-label="松島湾の島々が浮かぶ海の水平線と、手前に続く畑のうねを描いたイラスト"></canvas></div>
+      <figcaption>潮の水平線と、畑のうね。宮城の仕事が生まれる風景。</figcaption>
+    </figure>
     <div class="hero-foot">
       <p>SHIOTORYは、宮城・東北で働く人の思いと、仕事の背景を伝えるインタビューメディアです。</p>
       <a class="btn" href="#stories">STORIES を読む <span aria-hidden="true">→</span></a>
@@ -260,5 +265,79 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:13px;color:
     <span>© SHIOTORY</span>
   </div>
 </footer>
+
+<script>
+(function(){
+  var cv=document.getElementById('horizon'); if(!cv) return;
+  function tok(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+  function rng(seed){return function(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646;};}
+  function draw(){
+    var box=cv.parentNode, w=box.clientWidth, h=box.clientHeight; if(!w||!h) return;
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    cv.width=w*dpr; cv.height=h*dpr;
+    var c=cv.getContext('2d'); c.setTransform(dpr,0,0,dpr,0,0);
+    var r=rng(20261010), olive=tok('--olive'), soft=tok('--olive-soft'),
+        paper=tok('--paper'), ivory=tok('--ivory'), ink=tok('--ink');
+    var H=h*0.44, S=H+h*0.17, vx=w*0.42;
+
+    // sky
+    var g=c.createLinearGradient(0,0,0,H); g.addColorStop(0,paper); g.addColorStop(1,ivory);
+    c.fillStyle=g; c.fillRect(0,0,w,H);
+    // low morning sun
+    c.globalAlpha=.16; c.fillStyle=soft;
+    c.beginPath(); c.arc(w*0.74,H-h*0.13,Math.max(h*0.075,14),0,Math.PI*2); c.fill();
+
+    // sea
+    c.globalAlpha=1; c.fillStyle=ivory; c.fillRect(0,H,w,S-H);
+    for(var k=1;k<20;k++){
+      var y=H+(S-H)*Math.pow(k/20,1.5);
+      c.strokeStyle=soft; c.globalAlpha=.18+.3*(k/20); c.lineWidth=.6+.6*(k/20);
+      var x=-20; 
+      while(x<w){var len=20+r()*w*0.22; c.beginPath(); c.moveTo(x,y); c.lineTo(x+len,y); c.stroke(); x+=len+8+r()*40;}
+    }
+    // islands sitting on the horizon (Matsushima)
+    var isl=[[0.08,.07,.05],[0.17,.035,.03],[0.55,.05,.045],[0.62,.02,.022],[0.88,.06,.04]];
+    isl.forEach(function(p){
+      var cx=w*p[0], rw=w*p[1], rh=h*p[2];
+      c.globalAlpha=.55; c.fillStyle=olive;
+      c.beginPath(); c.moveTo(cx-rw,H);
+      c.bezierCurveTo(cx-rw*.7,H-rh*1.1,cx+rw*.6,H-rh*1.2,cx+rw,H); c.closePath(); c.fill();
+      // pines
+      c.globalAlpha=.7; c.lineWidth=1; c.strokeStyle=olive;
+      for(var i=0;i<3;i++){var px=cx-rw*.4+r()*rw*.8, ph=rh*(.5+r()*.5);
+        c.beginPath(); c.moveTo(px,H-rh*.7); c.lineTo(px+(r()-.5)*4,H-rh*.7-ph); c.stroke();}
+    });
+    c.globalAlpha=.8; c.strokeStyle=olive; c.lineWidth=1;
+    c.beginPath(); c.moveTo(0,H); c.lineTo(w,H); c.stroke();
+
+    // shore + field
+    c.globalAlpha=1; c.fillStyle=paper; c.fillRect(0,S,w,h-S);
+    c.save(); c.beginPath(); c.rect(0,S,w,h-S); c.clip();
+    var n=42;
+    for(var i=-n;i<=n;i++){
+      var t=i/n, xb=vx+t*w*1.9, xt=vx+(xb-vx)*(S-H)/(h-H);
+      c.globalAlpha=.32+.25*(1-Math.abs(t)); c.strokeStyle=olive; c.lineWidth=.8+ (1-Math.abs(t))*.7;
+      c.beginPath(); c.moveTo(xt,S); c.lineTo(xb,h); c.stroke();
+    }
+    for(var j=1;j<8;j++){
+      var yy=S+(h-S)*Math.pow(j/8,2);
+      c.globalAlpha=.1; c.strokeStyle=ink; c.beginPath(); c.moveTo(0,yy); c.lineTo(w,yy); c.stroke();
+    }
+    c.restore();
+    c.globalAlpha=.9; c.strokeStyle=olive; c.lineWidth=1.4;
+    c.beginPath(); c.moveTo(0,S); c.lineTo(w,S); c.stroke();
+
+    // paper grain
+    c.fillStyle=ink;
+    for(var q=0;q<w*h/90;q++){c.globalAlpha=.035+r()*.04; c.fillRect(r()*w,r()*h,1,1);}
+    c.globalAlpha=1;
+  }
+  draw();
+  var t; window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(draw,120);});
+  try{window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',draw);}catch(e){}
+  try{new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});}catch(e){}
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(draw);
+})();
+</script>
 </body>
 </html>
