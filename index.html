@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SHIOTORY</title>
 <meta name="description" content="SHIOTORYは、宮城・東北で働く人の思いと、仕事の背景を伝えるインタビューメディアです。">
 <meta property="og:title" content="SHIOTORY｜仕事の、向こう側へ。">
 <meta property="og:description" content="宮城・東北で働く人の思いと、仕事の背景を伝えるインタビューメディア。">
 <meta property="og:type" content="website">
-<title>SHIOTORY</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap");
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+
 /* Layout: editorial single column, wide photo bands, generous ivory margins; nav anchors stand in for the 5 pages */
 :root{
   --ivory:#F4F0E8; --paper:#EBE5D9; --olive:#343C35; --olive-soft:#5B6658;
@@ -27,9 +28,6 @@
   --ivory:#1F2320; --paper:#272C28; --olive:#C9D0BF; --olive-soft:#A7B19E;
   --ink:#E6E1D6; --muted:#A3A598; --line:#3A403A; --on-olive:#1F2320; color-scheme:dark}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0}
-img{max-width:100%}
 body{background:var(--ivory);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.9;letter-spacing:.02em}
 a{color:inherit}
 .wrap{max-width:1080px;margin:0 auto;padding-inline:clamp(16px,5vw,48px)}
@@ -112,6 +110,21 @@ section{padding-block:clamp(64px,9vw,112px)}
 .policy h3{font-size:16px}
 .policy ul{margin:0;padding-left:1.2em;color:var(--ink);font-size:15px}
 
+/* operator profile */
+.profile{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,6vw,80px);align-items:start;border-top:1px solid var(--line)}
+.profile-name{font-family:var(--f-display);font-size:clamp(25px,3vw,34px);color:var(--olive);line-height:1.5}
+.profile-body{display:grid;gap:18px;max-width:44em}
+.profile-body h3{font-size:18px;line-height:1.5;margin-top:8px}
+.profile-body p{color:var(--ink)}
+.profile-meta{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;border-top:1px solid var(--line);padding-top:18px}
+.profile-meta li{font-size:14px;color:var(--muted)}
+.profile-meta b{display:block;color:var(--olive);font-weight:700}
+.works-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.works-list span{border:1px solid var(--line);padding:5px 10px;font-size:13px;color:var(--ink)}
+.offer-details{list-style:none;margin:14px 0 0;padding:14px 0 0;border-top:1px solid var(--line);display:grid;gap:7px}
+.offer-details li{font-size:14px;color:var(--ink)}
+.offer-details b{color:var(--olive)}
+@media (max-width:760px){.profile{grid-template-columns:1fr}.profile-meta{grid-template-columns:1fr 1fr}}
 /* work */
 .notice{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(20px,4vw,56px);align-items:center;border:1px solid var(--olive);padding:clamp(22px,4vw,40px);margin-bottom:56px}
 .notice-txt{display:grid;gap:10px;min-width:0}
@@ -119,10 +132,7 @@ section{padding-block:clamp(64px,9vw,112px)}
 .notice-txt p:last-child{color:var(--ink);font-size:15px}
 .notice-price{display:grid;gap:6px;justify-items:start;border-left:1px solid var(--line);padding-left:clamp(20px,4vw,48px)}
 .price-label{font-size:13px;color:var(--muted);letter-spacing:.1em}
-.price{font-family:var(--f-latin);font-size:clamp(44px,6vw,64px);line-height:1;color:var(--olive);font-variant-numeric:tabular-nums;margin-bottom:8px}
-.steps{margin:0 0 12px;padding-left:1.3em;font-size:13px;color:var(--ink);line-height:1.8}
-.notice-btns{display:flex;flex-wrap:wrap;gap:10px}
-.notice-btns .btn{padding:11px 18px;font-size:13px}
+.price{font-family:var(--f-latin);font-size:clamp(44px,6vw,64px);line-height:1;color:var(--olive);font-variant-numeric:tabular-nums;margin-bottom:14px}
 .price small{font-family:var(--f-body);font-size:18px;margin-left:4px}
 @media (max-width:760px){.notice{grid-template-columns:1fr}.notice-price{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:20px}}
 .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px)}
@@ -154,11 +164,11 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:13px;color:
 }
 @media (max-width:600px){.cover{flex-wrap:wrap}.issue{flex-basis:100%;margin:8px 0 0}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
 </style>
 </head>
 <body>
-
-
+<div id="shiotory-embed-root">
 <header>
   <div class="wrap bar">
     <a class="logo" href="#top">SHIOTORY</a>
@@ -166,6 +176,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:13px;color:
       <a href="#stories">STORIES</a>
       <a href="#about">ABOUT</a>
       <a href="#work">WORK</a>
+      <a href="#profile">PROFILE</a>
       <a href="#contact">CONTACT</a>
     </nav>
   </div>
@@ -213,13 +224,12 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:13px;color:
     <div class="wrap about-grid">
       <div class="sec-head" style="margin:0">
         <p class="eyebrow">About SHIOTORY</p>
-        <h2>仕事の向こう側を<br>知る。</h2>
+        <h2>仕事の背景に、<br>耳を傾ける。</h2>
       </div>
       <div class="about-body">
-        <p>同じ商品でも、同じサービスでも、それを生み出す人の思いや歩んできた道のりは、一人ひとり違います。</p>
-        <p>なぜ、この仕事を始めたのか。どんな迷いや選択を経て、今にたどり着いたのか。何を大切にしながら、日々仕事に向き合っているのか。</p>
-        <p>SHIOTORYは、宮城・東北で働く人の言葉に耳を傾け、その人だからこそ語れる物語を届けるインタビューメディアです。</p>
-        <p>記事を読んだ人が、知らなかった人や仕事に出会い、誰かの活動を応援したくなる。そんな出会いを、ひとつずつつくっていきます。</p>
+        <p>SHIOTORYが届けたいのは、宮城・東北で仕事に向き合う人たちの物語です。地域や誰かの暮らしを支える仕事には、始めた理由や、続けるなかで重ねてきた工夫、その人が大切にしている思いがあります。</p>
+        <p>取材で話を聞き、その背景を知ると、私はその人や仕事を応援したくなります。読んだ人にも、そんな出会いを届けたい。知ることが、誰かを応援する小さなきっかけになったら。</p>
+        <p>その思いから、SHIOTORYをつくりました。宮城・東北で働く人の声に耳を傾け、その人だからこそ語れる仕事の物語を、本人の言葉を大切にしながら届けていきます。</p>
         <div class="policy">
           <h3>編集方針</h3>
           <ul>
@@ -244,21 +254,19 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:13px;color:
         <div class="notice-txt">
           <p class="eyebrow">Now Recruiting</p>
           <h3>創刊記念・取材モニター募集中</h3>
-          <p>宮城県内で働く方を対象に、SHIOTORYに掲載するインタビュー記事の取材モニターを募集しています。完成した記事は、ご自身のSNSやホームページでの紹介にもお使いいただけます。</p>
+          <p>宮城県内で働く方を対象に、SHIOTORYに掲載するインタビュー記事の取材モニターを募集しています。取材から記事公開までを一緒に試し、今後の企画づくりに活かすための募集です。</p>
+          <ul class="offer-details">
+            <li><b>取材：</b>約60分（対面・オンラインはご相談）</li>
+            <li><b>制作：</b>インタビュー記事1本（約1,500〜2,000字を目安）</li>
+            <li><b>確認：</b>公開前に事実確認を1回</li>
+            <li><b>掲載：</b>SHIOTORYに掲載し、記事URLをお渡し</li>
+            <li><b>写真：</b>お写真の提供を基本とし、撮影は個別にご相談</li>
+          </ul>
         </div>
         <div class="notice-price">
-          <span class="price-label">正規料金 10,000円</span>
-          <span class="price-label">公式LINE登録特典</span>
+          <span class="price-label">モニター価格</span>
           <span class="price">5,000<small>円</small></span>
-          <ol class="steps">
-            <li>公式LINEに友だち登録</li>
-            <li>届いたメッセージの合言葉を確認</li>
-            <li>フォームの「ご相談の概要」に合言葉を書いて応募</li>
-          </ol>
-          <div class="notice-btns">
-            <a class="btn" href="https://lin.ee/wNqDfj4" target="_blank" rel="noopener">公式LINEに登録 <span aria-hidden="true">→</span></a>
-            <a class="btn ghost" href="https://forms.gle/NQ9yW2eUf6fBi2or9" target="_blank" rel="noopener">応募フォーム <span aria-hidden="true">→</span></a>
-          </div>
+          <a class="btn" href="https://forms.gle/NQ9yW2eUf6fBi2or9" target="_blank" rel="noopener">フォームから応募する <span aria-hidden="true">→</span></a>
         </div>
       </div>
       <div class="work-grid">
@@ -287,6 +295,22 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:13px;color:
     </div>
   </section>
 
+  <section id="profile">
+    <div class="wrap profile">
+      <div>
+        <p class="eyebrow">Editor / Interviewer</p>
+        <h2 class="profile-name">西田ゆき</h2>
+        <p style="color:var(--muted);font-size:14px">宮城・仙台の取材ライター</p>
+      </div>
+      <div class="profile-body">
+        <p>宮城・仙台を中心に活動する取材ライターの西田ゆきです。山形県出身で、現在は多賀城市に暮らしています。9年間の歯科助手経験を経て、2022年からライターとして活動を始めました。医療分野の記事や、地域のお店・企業へのインタビューを中心に手がけています。</p>
+        <p>取材では、あせらずじっくりお話を伺うことを大切にしています。仕事にかける想いや日々の工夫に耳を傾け、読んだ人が「この人に会いに行きたい」と思えるような、情景が浮かぶ記事を目指しています。</p>
+        <p>地域や誰かの暮らしを支え、目の前の仕事に誠実に向き合う人たち。その背景を知ることで生まれる「応援したい」という気持ちを、読者のみなさんにも届けたくて、SHIOTORYを始めました。</p>
+        <p>宮城・東北で暮らし、働く人たちの声を、一つずつ心を込めて届けていきます。</p>
+      </div>
+    </div>
+  </section>
+
   <section id="contact" class="contact">
     <div class="wrap contact-inner">
       <p class="eyebrow">Contact</p>
@@ -301,11 +325,11 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:13px;color:
   <div class="wrap foot">
     <span>SHIOTORY｜仕事の、向こう側へ。</span>
     <nav aria-label="フッターメニュー">
-      <a href="#stories">STORIES</a><a href="#about">ABOUT</a><a href="#work">WORK</a><a href="#contact">CONTACT</a>
+      <a href="#stories">STORIES</a><a href="#about">ABOUT</a><a href="#work">WORK</a><a href="#profile">PROFILE</a><a href="#contact">CONTACT</a>
     </nav>
     <span>© SHIOTORY</span>
   </div>
 </footer>
-
+</div>
 </body>
 </html>
